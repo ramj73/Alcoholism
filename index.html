@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI + AlphaFold Alcoholism Research Platform — Interactive research dashboard for exploring AI-driven approaches to Alcohol Use Disorder, featuring 3D protein visualization, genomic variant data, and structured research roadmaps.">
+  <meta name="keywords" content="alcoholism, AI, AlphaFold, protein structure, GWAS, addiction, research, genomics, drug discovery">
+  <title>AI + AlphaFold Alcoholism Research Platform</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">🧬</span>
+        <span>AlcoholismAI</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#targets">Targets</a></li>
+        <li><a href="#protein-viewer">Proteins</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#gwas">GWAS</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#therapy">Therapy</a></li>
+        <li><a href="#datasets">Datasets</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#phases">Phases</a></li>
+        <li><a href="#reality">Reality</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+          <svg class="theme-icon theme-icon--dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="theme-icon theme-icon--light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <canvas class="hero-canvas" id="hero-canvas"></canvas>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <h1>AI + AlphaFold Roadmap for Alcoholism Research</h1>
+      <p class="subtitle">
+        Using artificial intelligence and protein structure prediction to identify biological targets,
+        model addiction-related proteins, discover therapies, and personalize treatment for Alcohol Use Disorder.
+      </p>
+      <a href="#targets" class="hero-cta">
+        Explore Research Targets
+        <span>→</span>
+      </a>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-value">11</div>
+          <div class="stat-label">Target Genes</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Mapped Proteins</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value">5</div>
+          <div class="stat-label">Biological Systems</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Dev Phases</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       BIOLOGICAL TARGETS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="targets">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🎯 Key Research Targets</span>
+        <h2>Biological Targets</h2>
+        <p>Five key biological systems involved in Alcohol Use Disorder. Click a card to explore its genes, or click a gene tag to view its protein structure.</p>
+      </div>
+
+      <div class="targets-grid">
+
+        <!-- Dopamine Reward System -->
+        <div class="glass-card target-card fade-in" style="--card-accent: #00d4ff;">
+          <div class="target-header">
+            <div class="target-icon" style="background: rgba(0, 212, 255, 0.1);">⚡</div>
+            <h3 class="target-title">Dopamine Reward System</h3>
+          </div>
+          <p class="target-description">Affects reward sensitivity and addiction vulnerability. The dopamine system is central to how the brain processes pleasure and motivation.</p>
+          <div class="target-genes">
+            <span class="gene-tag" data-gene="DRD2">DRD2</span>
+            <span class="gene-tag" data-gene="DRD4">DRD4</span>
+            <span class="gene-tag" data-gene="DAT1">DAT1</span>
+          </div>
+          <div class="target-expand">
+            <div class="gene-detail">
+              <div class="gene-detail-name">DRD2 — D2 Dopamine Receptor</div>
+              <div class="gene-detail-desc">Mediates reward signaling; reduced expression linked to addiction risk.</div>
+            </div>
+            <div class="gene-detail">
+              <div class="gene-detail-name">DRD4 — D4 Dopamine Receptor</div>
+              <div class="gene-detail-desc">Associated with novelty-seeking behavior and impulsivity.</div>
+            </div>
+            <div class="gene-detail">
+              <div class="gene-detail-name">DAT1 — Dopamine Transporter (SLC6A3)</div>
+              <div class="gene-detail-desc">Regulates dopamine reuptake; variants affect dopamine availability.</div>
+            </div>
+          </div>
+          <div class="expand-indicator">
+            <span>Details</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- GABA Receptors -->
+        <div class="glass-card target-card fade-in fade-in-delay-1" style="--card-accent: #00f5c8;">
+          <div class="target-header">
+            <div class="target-icon" style="background: rgba(0, 245, 200, 0.1);">🛡️</div>
+            <h3 class="target-title">GABA Receptors</h3>
+          </div>
+          <p class="target-description">Alcohol strongly affects GABA signaling. GABA is the brain's primary inhibitory neurotransmitter, and alcohol enhances its effects.</p>
+          <div class="target-genes">
+            <span class="gene-tag" data-gene="GABRA2">GABRA2</span>
+            <span class="gene-tag" data-gene="GABRB1">GABRB1</span>
+          </div>
+          <div class="target-expand">
+            <div class="gene-detail">
+              <div class="gene-detail-name">GABRA2 — GABA-A Receptor Alpha-2</div>
+              <div class="gene-detail-desc">Strongly associated with alcohol dependence in genetic studies.</div>
+            </div>
+            <div class="gene-detail">
+              <div class="gene-detail-name">GABRB1 — GABA-A Receptor Beta-1</div>
+              <div class="gene-detail-desc">Contributes to sedative and anxiolytic effects of alcohol.</div>
+            </div>
+          </div>
+          <div class="expand-indicator">
+            <span>Details</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Glutamate / NMDA -->
+        <div class="glass-card target-card fade-in fade-in-delay-2" style="--card-accent: #f59e0b;">
+          <div class="target-header">
+            <div class="target-icon" style="background: rgba(245, 158, 11, 0.1);">🔥</div>
+            <h3 class="target-title">Glutamate / NMDA System</h3>
+          </div>
+          <p class="target-description">Important for craving and withdrawal. Glutamate is the brain's primary excitatory neurotransmitter, counterbalancing GABA.</p>
+          <div class="target-genes">
+            <span class="gene-tag" data-gene="GRIN2B">GRIN2B</span>
+          </div>
+          <div class="target-expand">
+            <div class="gene-detail">
+              <div class="gene-detail-name">GRIN2B — NMDA Receptor Subunit 2B</div>
+              <div class="gene-detail-desc">Involved in alcohol withdrawal severity and craving intensity.</div>
+            </div>
+          </div>
+          <div class="expand-indicator">
+            <span>Details</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Alcohol Metabolism -->
+        <div class="glass-card target-card fade-in fade-in-delay-3" style="--card-accent: #7c3aed;">
+          <div class="target-header">
+            <div class="target-icon" style="background: rgba(124, 58, 237, 0.1);">🧪</div>
+            <h3 class="target-title">Alcohol Metabolism</h3>
+          </div>
+          <p class="target-description">Determines how alcohol is processed in the body. Variants in these enzymes significantly affect alcohol tolerance and risk.</p>
+          <div class="target-genes">
+            <span class="gene-tag" data-gene="ADH1B">ADH1B</span>
+            <span class="gene-tag" data-gene="ALDH2">ALDH2</span>
+          </div>
+          <div class="target-expand">
+            <div class="gene-detail">
+              <div class="gene-detail-name">ADH1B — Alcohol Dehydrogenase 1B</div>
+              <div class="gene-detail-desc">Converts ethanol to acetaldehyde; fast-acting variant is protective.</div>
+            </div>
+            <div class="gene-detail">
+              <div class="gene-detail-name">ALDH2 — Aldehyde Dehydrogenase 2</div>
+              <div class="gene-detail-desc">Clears toxic acetaldehyde; deficiency causes alcohol flush reaction.</div>
+            </div>
+          </div>
+          <div class="expand-indicator">
+            <span>Details</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Stress & Impulse Control -->
+        <div class="glass-card target-card fade-in fade-in-delay-4" style="--card-accent: #f43f5e;">
+          <div class="target-header">
+            <div class="target-icon" style="background: rgba(244, 63, 94, 0.1);">🧠</div>
+            <h3 class="target-title">Stress & Impulse Control</h3>
+          </div>
+          <p class="target-description">Linked to cravings and behavioral control. These genes influence how the brain handles stress, pain, and impulse regulation.</p>
+          <div class="target-genes">
+            <span class="gene-tag" data-gene="OPRM1">OPRM1</span>
+            <span class="gene-tag" data-gene="COMT">COMT</span>
+            <span class="gene-tag" data-gene="MAOA">MAOA</span>
+          </div>
+          <div class="target-expand">
+            <div class="gene-detail">
+              <div class="gene-detail-name">OPRM1 — Mu-Opioid Receptor</div>
+              <div class="gene-detail-desc">Target of naltrexone; mediates alcohol's pleasurable effects.</div>
+            </div>
+            <div class="gene-detail">
+              <div class="gene-detail-name">COMT — Catechol-O-Methyltransferase</div>
+              <div class="gene-detail-desc">Degrades dopamine; variants affect stress response and impulsivity.</div>
+            </div>
+            <div class="gene-detail">
+              <div class="gene-detail-name">MAOA — Monoamine Oxidase A</div>
+              <div class="gene-detail-desc">Metabolizes serotonin and dopamine; linked to aggression and risk-taking.</div>
+            </div>
+          </div>
+          <div class="expand-indicator">
+            <span>Details</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       PROTEIN VIEWER (Phase 2 placeholder)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="protein-viewer-section" id="protein-viewer">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🔬 3D Protein Explorer</span>
+        <h2>AlphaFold Protein Viewer</h2>
+        <p>Explore the 3D structures of addiction-related proteins. Select a protein to load its AlphaFold-predicted structure.</p>
+      </div>
+
+      <div class="protein-viewer-layout fade-in">
+        <!-- Sidebar: Protein Selection -->
+        <div class="protein-sidebar">
+          <button class="protein-btn" data-uniprot="P14416" data-gene="DRD2">
+            <span class="btn-gene">DRD2</span>
+            <span class="btn-label">D2 Dopamine Receptor</span>
+          </button>
+          <button class="protein-btn" data-uniprot="P21917" data-gene="DRD4">
+            <span class="btn-gene">DRD4</span>
+            <span class="btn-label">D4 Dopamine Receptor</span>
+          </button>
+          <button class="protein-btn" data-uniprot="P47869" data-gene="GABRA2">
+            <span class="btn-gene">GABRA2</span>
+            <span class="btn-label">GABA-A Receptor α2</span>
+          </button>
+          <button class="protein-btn" data-uniprot="Q13224" data-gene="GRIN2B">
+            <span class="btn-gene">GRIN2B</span>
+            <span class="btn-label">NMDA Receptor 2B</span>
+          </button>
+          <button class="protein-btn" data-uniprot="P00325" data-gene="ADH1B">
+            <span class="btn-gene">ADH1B</span>
+            <span class="btn-label">Alcohol Dehydrogenase 1B</span>
+          </button>
+          <button class="protein-btn" data-uniprot="P05091" data-gene="ALDH2">
+            <span class="btn-gene">ALDH2</span>
+            <span class="btn-label">Aldehyde Dehydrogenase</span>
+          </button>
+          <button class="protein-btn" data-uniprot="P35372" data-gene="OPRM1">
+            <span class="btn-gene">OPRM1</span>
+            <span class="btn-label">Mu-Opioid Receptor</span>
+          </button>
+        </div>
+
+        <!-- Viewer Container -->
+        <div class="protein-viewer-container">
+          <div class="protein-info-bar">
+            <span class="info-name">Select a protein to begin</span>
+            <span class="info-meta">Powered by AlphaFold DB + 3Dmol.js</span>
+          </div>
+          <div id="protein-3d-viewer">
+            <div class="viewer-placeholder">
+              <div class="placeholder-icon">🔬</div>
+              <p>Select a protein from the sidebar to load its<br>AlphaFold-predicted 3D structure</p>
+            </div>
+          </div>
+          <div class="viewer-controls">
+            <button class="viewer-control-btn active" data-style="cartoon">Cartoon</button>
+            <button class="viewer-control-btn" data-style="stick">Stick</button>
+            <button class="viewer-control-btn" data-style="surface">Surface</button>
+            <button class="viewer-control-btn" data-style="ball-stick">Ball & Stick</button>
+            <button class="viewer-control-btn" data-style="spectrum">Spectrum Color</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ALPHAFOLD WORKFLOW PIPELINE
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="workflow">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🔄 Research Pipeline</span>
+        <h2>AlphaFold Workflow</h2>
+        <p>From genome variant to candidate therapy — the step-by-step research pipeline powered by AlphaFold.</p>
+      </div>
+
+      <div class="workflow-pipeline">
+        <div class="workflow-step">
+          <div class="workflow-step-icon">🧬</div>
+          <div class="workflow-step-title">Genome Variant</div>
+          <div class="workflow-step-desc">Identify genetic variants from patient genome data</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+
+        <div class="workflow-step">
+          <div class="workflow-step-icon">🔀</div>
+          <div class="workflow-step-title">Protein Mutation</div>
+          <div class="workflow-step-desc">Map variants to amino acid changes</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+
+        <div class="workflow-step">
+          <div class="workflow-step-icon">🏗️</div>
+          <div class="workflow-step-title">AlphaFold Prediction</div>
+          <div class="workflow-step-desc">Predict 3D protein structure</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+
+        <div class="workflow-step">
+          <div class="workflow-step-icon">🎯</div>
+          <div class="workflow-step-title">Binding Site Analysis</div>
+          <div class="workflow-step-desc">Characterize binding pockets</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+
+        <div class="workflow-step">
+          <div class="workflow-step-icon">🔬</div>
+          <div class="workflow-step-title">Drug Docking</div>
+          <div class="workflow-step-desc">Simulate drug-protein interactions</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+
+        <div class="workflow-step">
+          <div class="workflow-step-icon">💊</div>
+          <div class="workflow-step-title">Candidate Therapy</div>
+          <div class="workflow-step-desc">Select promising drug candidates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       GWAS VARIANT LOOKUP (Phase 2 placeholder)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="gwas-section" id="gwas">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🧪 Genomic Variants</span>
+        <h2>GWAS Variant Lookup</h2>
+        <p>Search the GWAS Catalog for genetic variants associated with addiction-related genes.</p>
+      </div>
+
+      <div class="gwas-container fade-in">
+        <div class="gwas-search">
+          <input type="text" class="gwas-input" id="gwas-input" placeholder="Enter a gene name (e.g., ADH1B, DRD2)..." aria-label="Gene name search">
+          <button class="gwas-search-btn" id="gwas-search-btn">Search GWAS</button>
+        </div>
+
+        <div class="gwas-quick-btns">
+          <button class="gwas-quick-btn" data-gene="DRD2">DRD2</button>
+          <button class="gwas-quick-btn" data-gene="DRD4">DRD4</button>
+          <button class="gwas-quick-btn" data-gene="DAT1">DAT1</button>
+          <button class="gwas-quick-btn" data-gene="GABRA2">GABRA2</button>
+          <button class="gwas-quick-btn" data-gene="GABRB1">GABRB1</button>
+          <button class="gwas-quick-btn" data-gene="GRIN2B">GRIN2B</button>
+          <button class="gwas-quick-btn" data-gene="ADH1B">ADH1B</button>
+          <button class="gwas-quick-btn" data-gene="ALDH2">ALDH2</button>
+          <button class="gwas-quick-btn" data-gene="OPRM1">OPRM1</button>
+          <button class="gwas-quick-btn" data-gene="COMT">COMT</button>
+          <button class="gwas-quick-btn" data-gene="MAOA">MAOA</button>
+        </div>
+
+        <div id="gwas-results" class="gwas-results">
+          <div class="gwas-empty">
+            <p>🔬 Enter a gene name or click a quick-select button to search for associated genetic variants.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SOFTWARE STACK
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="stack">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🛠️ Research Tools</span>
+        <h2>Recommended Software Stack</h2>
+        <p>Tools and frameworks for protein prediction, molecular docking, genomics, AI, and molecular dynamics.</p>
+      </div>
+
+      <div class="stack-grid">
+
+        <!-- Protein Structure Prediction -->
+        <div class="glass-card stack-category fade-in" style="--card-accent: #00d4ff;">
+          <div class="stack-category-header">
+            <span class="stack-category-icon">🧬</span>
+            <h3 class="stack-category-title">Protein Structure Prediction</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="stack-tool">
+              <div class="stack-tool-name">AlphaFold</div>
+              <div class="stack-tool-desc">DeepMind's protein structure prediction system. Gold standard for accuracy.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">RoseTTAFold</div>
+              <div class="stack-tool-desc">Three-track neural network for protein structure prediction by Baker Lab.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">ESMFold</div>
+              <div class="stack-tool-desc">Meta's fast single-sequence structure prediction using language models.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Molecular Docking -->
+        <div class="glass-card stack-category fade-in fade-in-delay-1" style="--card-accent: #00f5c8;">
+          <div class="stack-category-header">
+            <span class="stack-category-icon">🔬</span>
+            <h3 class="stack-category-title">Molecular Docking</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="stack-tool">
+              <div class="stack-tool-name">AutoDock Vina</div>
+              <div class="stack-tool-desc">Open-source molecular docking program for drug discovery.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">PyMOL</div>
+              <div class="stack-tool-desc">Molecular visualization system for rendering and analyzing 3D structures.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">ChimeraX</div>
+              <div class="stack-tool-desc">Next-generation molecular visualization from UCSF.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Genomics & Variant Analysis -->
+        <div class="glass-card stack-category fade-in fade-in-delay-2" style="--card-accent: #f59e0b;">
+          <div class="stack-category-header">
+            <span class="stack-category-icon">🧪</span>
+            <h3 class="stack-category-title">Genomics & Variant Analysis</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="stack-tool">
+              <div class="stack-tool-name">PLINK</div>
+              <div class="stack-tool-desc">Whole-genome association analysis toolset for large datasets.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">GATK</div>
+              <div class="stack-tool-desc">Genome Analysis Toolkit for variant discovery and genotyping.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">bcftools</div>
+              <div class="stack-tool-desc">Utilities for variant calling and manipulating VCF/BCF files.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Frameworks -->
+        <div class="glass-card stack-category fade-in fade-in-delay-3" style="--card-accent: #7c3aed;">
+          <div class="stack-category-header">
+            <span class="stack-category-icon">🤖</span>
+            <h3 class="stack-category-title">AI Frameworks</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="stack-tool">
+              <div class="stack-tool-name">PyTorch</div>
+              <div class="stack-tool-desc">Deep learning framework favored in research for flexibility.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">TensorFlow</div>
+              <div class="stack-tool-desc">End-to-end ML platform for production-ready models.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">DeepChem</div>
+              <div class="stack-tool-desc">Democratizing deep learning for drug discovery and chemistry.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Molecular Dynamics -->
+        <div class="glass-card stack-category fade-in fade-in-delay-4" style="--card-accent: #f43f5e;">
+          <div class="stack-category-header">
+            <span class="stack-category-icon">⚛️</span>
+            <h3 class="stack-category-title">Molecular Dynamics</h3>
+          </div>
+          <div class="stack-tools">
+            <div class="stack-tool">
+              <div class="stack-tool-name">GROMACS</div>
+              <div class="stack-tool-desc">High-performance molecular dynamics simulation package.</div>
+            </div>
+            <div class="stack-tool">
+              <div class="stack-tool-name">OpenMM</div>
+              <div class="stack-tool-desc">GPU-accelerated molecular simulation toolkit with Python API.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       PERSONALIZED THERAPY PIPELINE
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="therapy">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">💊 Practical Direction</span>
+        <h2>AI-Personalized Addiction Therapy</h2>
+        <p>A realistic and impactful direction combining genome data, wearable biomarkers, neurochemistry, and personalized medication selection.</p>
+      </div>
+
+      <div class="therapy-pipeline fade-in">
+        <div class="therapy-step">
+          <div class="therapy-step-icon">🧬</div>
+          <h3 class="therapy-step-title">Patient Genome</h3>
+          <p class="therapy-step-desc">Analyze genome to predict alcohol sensitivity and metabolic profile.</p>
+        </div>
+        <div class="therapy-step">
+          <div class="therapy-step-icon">⌚</div>
+          <h3 class="therapy-step-title">Wearable Data</h3>
+          <p class="therapy-step-desc">Monitor real-time stress levels, heart rate, and craving patterns.</p>
+        </div>
+        <div class="therapy-step">
+          <div class="therapy-step-icon">🤖</div>
+          <h3 class="therapy-step-title">AI Analysis</h3>
+          <p class="therapy-step-desc">Predict relapse risk using combined genomic and behavioral data.</p>
+        </div>
+        <div class="therapy-step">
+          <div class="therapy-step-icon">💊</div>
+          <h3 class="therapy-step-title">Precision Medicine</h3>
+          <p class="therapy-step-desc">Select optimal therapy based on individual biological profile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       PUBLIC DATASETS
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="datasets-section" id="datasets">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">📊 Open Data</span>
+        <h2>Public Datasets & Resources</h2>
+        <p>Open-access databases and resources for genomics, protein structures, and addiction research.</p>
+      </div>
+
+      <div class="datasets-grid fade-in">
+
+        <!-- Genomics -->
+        <div class="dataset-category">
+          <h3 class="dataset-category-title">Genomics</h3>
+          <div class="dataset-links">
+            <a href="https://www.ncbi.nlm.nih.gov/gap/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">dbGaP</div>
+              <div class="dataset-card-desc">Database of Genotypes and Phenotypes. Archive of genotype-phenotype studies.</div>
+            </a>
+            <a href="https://www.ebi.ac.uk/gwas/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">GWAS Catalog</div>
+              <div class="dataset-card-desc">Curated collection of published genome-wide association studies.</div>
+            </a>
+            <a href="https://www.internationalgenome.org/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">1000 Genomes Project</div>
+              <div class="dataset-card-desc">Deep catalog of human genetic variation across populations.</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Protein Structures -->
+        <div class="dataset-category">
+          <h3 class="dataset-category-title">Protein Structures</h3>
+          <div class="dataset-links">
+            <a href="https://alphafold.ebi.ac.uk/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">AlphaFold Protein Structure DB</div>
+              <div class="dataset-card-desc">Over 200M predicted protein structures from DeepMind & EMBL-EBI.</div>
+            </a>
+            <a href="https://www.rcsb.org/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">Protein Data Bank (PDB)</div>
+              <div class="dataset-card-desc">Archive of experimentally determined 3D structures of biological macromolecules.</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Addiction Research -->
+        <div class="dataset-category">
+          <h3 class="dataset-category-title">Addiction Research</h3>
+          <div class="dataset-links">
+            <a href="https://www.niaaa.nih.gov/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">NIAAA</div>
+              <div class="dataset-card-desc">National Institute on Alcohol Abuse and Alcoholism. Leading federal agency for alcohol research.</div>
+            </a>
+            <a href="https://www.med.unc.edu/pgc/" target="_blank" rel="noopener" class="glass-card dataset-card">
+              <div class="dataset-card-name">Addiction Genetics Consortium</div>
+              <div class="dataset-card-desc">Collaborative research consortium for psychiatric and addiction genetics.</div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SYSTEM ARCHITECTURE
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="architecture">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🏗️ System Design</span>
+        <h2>System Architecture</h2>
+        <p>Four-layer architecture from patient data collection through to clinical decision-making.</p>
+      </div>
+
+      <div class="architecture-stack fade-in">
+        <div class="glass-card arch-layer" style="--layer-color: #00d4ff;">
+          <div class="arch-layer-header">
+            <span class="arch-layer-icon">👤</span>
+            <h3 class="arch-layer-title">Patient Data Layer</h3>
+          </div>
+          <div class="arch-layer-components">
+            <span class="arch-component">Genome VCF</span>
+            <span class="arch-component">Wearables</span>
+            <span class="arch-component">Blood Markers</span>
+            <span class="arch-component">Behavioral Data</span>
+            <span class="arch-component">Medical History</span>
+          </div>
+        </div>
+
+        <div class="arch-flow-arrow">▼</div>
+
+        <div class="glass-card arch-layer" style="--layer-color: #00f5c8;">
+          <div class="arch-layer-header">
+            <span class="arch-layer-icon">🤖</span>
+            <h3 class="arch-layer-title">AI Analysis Layer</h3>
+          </div>
+          <div class="arch-layer-components">
+            <span class="arch-component">Variant Interpretation</span>
+            <span class="arch-component">Risk Scoring</span>
+            <span class="arch-component">Protein Modeling</span>
+            <span class="arch-component">Relapse Prediction</span>
+            <span class="arch-component">Drug Recommendation</span>
+          </div>
+        </div>
+
+        <div class="arch-flow-arrow">▼</div>
+
+        <div class="glass-card arch-layer" style="--layer-color: #7c3aed;">
+          <div class="arch-layer-header">
+            <span class="arch-layer-icon">🔬</span>
+            <h3 class="arch-layer-title">Bioinformatics Layer</h3>
+          </div>
+          <div class="arch-layer-components">
+            <span class="arch-component">AlphaFold</span>
+            <span class="arch-component">Docking Engine</span>
+            <span class="arch-component">Pathway Analysis</span>
+            <span class="arch-component">Molecular Dynamics</span>
+          </div>
+        </div>
+
+        <div class="arch-flow-arrow">▼</div>
+
+        <div class="glass-card arch-layer" style="--layer-color: #f43f5e;">
+          <div class="arch-layer-header">
+            <span class="arch-layer-icon">🏥</span>
+            <h3 class="arch-layer-title">Clinical Layer</h3>
+          </div>
+          <div class="arch-layer-components">
+            <span class="arch-component">Personalized Interventions</span>
+            <span class="arch-component">Medication Optimization</span>
+            <span class="arch-component">Therapy Matching</span>
+            <span class="arch-component">Longitudinal Monitoring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       DEVELOPMENT PHASES
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="phases">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">📋 Roadmap</span>
+        <h2>Development Phases</h2>
+        <p>A phased approach to building the AI-driven addiction research platform.</p>
+      </div>
+
+      <div class="phases-timeline fade-in">
+
+        <!-- Phase 1 -->
+        <div class="glass-card phase-card" data-status="current">
+          <div class="phase-number">01</div>
+          <h3 class="phase-title">Foundation</h3>
+          <span class="phase-status current">Current Phase</span>
+          <ul class="phase-items">
+            <li>Genome ingestion pipeline</li>
+            <li>Addiction-risk scoring model</li>
+            <li>Wearable device integration</li>
+            <li>Gene interpretation tools</li>
+          </ul>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="glass-card phase-card" data-status="planned">
+          <div class="phase-number">02</div>
+          <h3 class="phase-title">Bioinformatics</h3>
+          <span class="phase-status planned">Planned</span>
+          <ul class="phase-items">
+            <li>AlphaFold prediction workflows</li>
+            <li>Molecular docking pipelines</li>
+            <li>AI drug candidate ranking</li>
+          </ul>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="glass-card phase-card" data-status="planned">
+          <div class="phase-number">03</div>
+          <h3 class="phase-title">Clinical AI</h3>
+          <span class="phase-status planned">Planned</span>
+          <ul class="phase-items">
+            <li>Clinical decision support system</li>
+            <li>Personalized intervention engine</li>
+            <li>Relapse prediction AI model</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       REALITY CHECK
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="reality-section" id="reality">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">⚖️ Honest Assessment</span>
+        <h2>Reality Check</h2>
+        <p>A balanced view of what AI can accomplish and the inherent challenges of addiction research.</p>
+      </div>
+
+      <div class="reality-grid fade-in">
+        <div class="reality-col">
+          <h3><span style="color: var(--accent-teal);">✓</span> AI Can Accelerate</h3>
+          <ul class="reality-list positive">
+            <li>Target discovery and validation</li>
+            <li>Drug development pipelines</li>
+            <li>Precision medicine approaches</li>
+            <li>Relapse prediction models</li>
+            <li>Recovery outcome optimization</li>
+          </ul>
+        </div>
+        <div class="reality-col">
+          <h3><span style="color: var(--accent-amber);">⚠</span> Challenges Remain</h3>
+          <ul class="reality-list challenges">
+            <li>Complex neurological systems involved</li>
+            <li>Environmental influences on behavior</li>
+            <li>Behavioral reinforcement patterns</li>
+            <li>Long-term adaptive brain chemistry</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reality-footer fade-in">
+        <p>"Human trials and clinical validation remain essential. AI is a powerful accelerator, not a replacement for rigorous science."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="https://alphafold.ebi.ac.uk/" target="_blank" rel="noopener">AlphaFold</a>
+      <a href="https://3dmol.csb.pitt.edu/" target="_blank" rel="noopener">3Dmol.js</a>
+      <a href="https://www.ebi.ac.uk/gwas/" target="_blank" rel="noopener">GWAS Catalog</a>
+      <a href="https://www.rcsb.org/" target="_blank" rel="noopener">PDB</a>
+      <a href="https://www.niaaa.nih.gov/" target="_blank" rel="noopener">NIAAA</a>
+    </div>
+    <p class="footer-credit">AI + AlphaFold Alcoholism Research Platform · For research and educational purposes</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
