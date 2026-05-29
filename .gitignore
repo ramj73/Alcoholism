@@ -1,0 +1,30 @@
+# ── large binaries — download separately, don't commit these ──────────
+# GATK jars (400MB+ each, way over GitHub's 100MB limit)
+tools/gatk/*.jar
+tools/gatk/*.zip
+
+# PLINK binary
+tools/plink.exe
+
+# Other bioinformatics tools
+tools/Haploview.jar
+tools/gPLINK.jar
+tools/vina.exe
+tools/vina_split.exe
+tools/prettify.exe
+
+# HapMap dataset (wgas1 — 83k SNPs, ~80MB .ped file)
+# download with: python tools/download_hapmap.py
+tools/wgas1.ped
+tools/wgas1.map
+
+# ── Python ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# ── OS junk ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

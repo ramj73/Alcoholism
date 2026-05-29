@@ -35,6 +35,7 @@
         <li><a href="#protein-viewer">Proteins</a></li>
         <li><a href="#workflow">Workflow</a></li>
         <li><a href="#gwas">GWAS</a></li>
+        <li><a href="#genomics-studio">Genomics Studio</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#therapy">Therapy</a></li>
         <li><a href="#datasets">Datasets</a></li>
@@ -420,6 +421,126 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════
+       GENOMICS STUDIO (Local Analysis)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="genomics-section" id="genomics-studio">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">🧬 Local Genomics Studio</span>
+        <h2>Genome Sequencing & Variant Analysis</h2>
+        <p>Run local genomics pipelines directly on your machine. Test tool chains, run whole-genome associations, and analyze sequence variants using PLINK and GATK.</p>
+      </div>
+
+      <!-- Health Checker Panel -->
+      <div class="health-checker glass-card fade-in">
+        <div class="health-header">
+          <h3>Local Environment Diagnostics</h3>
+          <button class="gwas-search-btn" id="genomics-diag-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Run Diagnostics</button>
+        </div>
+        <div class="health-badges">
+          <div class="status-badge status-badge--loading" id="status-plink" title="Checking plink.exe...">
+            <span class="status-dot"></span>
+            <span class="status-label">PLINK v1.9:</span>
+            <span class="status-text">Checking...</span>
+          </div>
+          <div class="status-badge status-badge--loading" id="status-gatk" title="Checking GATK jar...">
+            <span class="status-dot"></span>
+            <span class="status-label">GATK v4.6.2:</span>
+            <span class="status-text">Checking...</span>
+          </div>
+          <div class="status-badge status-badge--loading" id="status-java" title="Checking Java version...">
+            <span class="status-dot"></span>
+            <span class="status-label">Java Environment:</span>
+            <span class="status-text">Checking...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="genomics-grid fade-in">
+        <!-- Pipeline Runner Controls -->
+        <div class="glass-card pipeline-controls-card">
+          <div class="controls-header">
+            <h3>Pipeline Configuration</h3>
+            <button class="gwas-quick-btn" id="genomics-sim-btn" style="margin-left: auto; font-size: 0.8rem; border-color: var(--accent-cyan);">Generate Simulated Datasets</button>
+          </div>
+          
+          <div class="pipeline-block">
+            <h4 style="color: var(--accent-cyan); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif;">
+              <span style="font-size: 1.1rem;">🏃</span> PLINK Analysis
+            </h4>
+            <div class="form-group">
+              <label for="plink-dataset-select" style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem;">Select Input Dataset</label>
+              <select class="gwas-input" id="plink-dataset-select" style="width: 100%; border-radius: 6px; background: rgba(15, 22, 41, 0.6); color: var(--text-normal); height: 42px; border: 1px solid var(--border-color); padding: 0 0.8rem;">
+                <option>Loading datasets...</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="plink-analysis-select" style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem;">Select Analysis Mode</label>
+              <select class="gwas-input" id="plink-analysis-select" style="width: 100%; border-radius: 6px; background: rgba(15, 22, 41, 0.6); color: var(--text-normal); height: 42px; border: 1px solid var(--border-color); padding: 0 0.8rem;">
+                <option value="freq">Allele Frequencies (--freq)</option>
+                <option value="assoc">Case-Control Association Test (--assoc)</option>
+                <option value="hardy">Hardy-Weinberg Equilibrium Test (--hardy)</option>
+              </select>
+            </div>
+            <button class="gwas-search-btn" id="plink-run-btn" style="width: 100%; margin-top: 1.2rem; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));">Execute PLINK Pipeline</button>
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;" />
+
+          <div class="pipeline-block">
+            <h4 style="color: var(--accent-teal); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; font-family: 'Outfit', sans-serif;">
+              <span style="font-size: 1.1rem;">🛠️</span> GATK Variant Analysis
+            </h4>
+            <div class="form-group">
+              <label for="gatk-vcf-select" style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem;">Select Variant Call File (VCF)</label>
+              <select class="gwas-input" id="gatk-vcf-select" style="width: 100%; border-radius: 6px; background: rgba(15, 22, 41, 0.6); color: var(--text-normal); height: 42px; border: 1px solid var(--border-color); padding: 0 0.8rem;">
+                <option>Loading VCF files...</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="gatk-tool-select" style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem;">Select GATK Tool</label>
+              <select class="gwas-input" id="gatk-tool-select" style="width: 100%; border-radius: 6px; background: rgba(15, 22, 41, 0.6); color: var(--text-normal); height: 42px; border: 1px solid var(--border-color); padding: 0 0.8rem;" disabled>
+                <option value="CountVariants">CountVariants (Diagnostics)</option>
+              </select>
+            </div>
+            <button class="gwas-search-btn" id="gatk-run-btn" style="width: 100%; margin-top: 1.2rem; background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan));">Execute GATK Diagnostics</button>
+          </div>
+        </div>
+
+        <!-- Terminal Logs Panel -->
+        <div class="glass-card terminal-card">
+          <div class="terminal-header">
+            <span class="terminal-dot" style="background: #ff5f56;"></span>
+            <span class="terminal-dot" style="background: #ffbd2e;"></span>
+            <span class="terminal-dot" style="background: #27c93f;"></span>
+            <span class="terminal-title">Genomics Pipeline Log</span>
+          </div>
+          <div class="terminal-body" id="genomics-console">
+            <div class="console-placeholder">
+              <span style="color: var(--accent-cyan); font-size: 1.5rem; display: block; margin-bottom: 0.5rem;">❖</span>
+              System log idle. Choose a pipeline configuration and click execute to view running logs.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analysis Results Area -->
+      <div class="genomics-results glass-card fade-in" id="genomics-results-panel">
+        <div class="results-header-bar">
+          <h3>Pipeline Output Visualizer</h3>
+          <span style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">Parses output reports in real-time</span>
+        </div>
+        <div class="results-content-area" id="genomics-results-content">
+          <div class="gwas-empty">
+            <p>📊 Running an analysis will output interactive plots and data tables here.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
        SOFTWARE STACK
        ═══════════════════════════════════════════════════════════════ -->
   <section id="stack">
@@ -439,18 +560,18 @@
             <h3 class="stack-category-title">Protein Structure Prediction</h3>
           </div>
           <div class="stack-tools">
-            <div class="stack-tool">
+            <a href="https://github.com/google-deepmind/alphafold" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">AlphaFold</div>
               <div class="stack-tool-desc">DeepMind's protein structure prediction system. Gold standard for accuracy.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://github.com/uw-ipd/RoseTTAFold" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">RoseTTAFold</div>
               <div class="stack-tool-desc">Three-track neural network for protein structure prediction by Baker Lab.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://github.com/facebookresearch/esm" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">ESMFold</div>
               <div class="stack-tool-desc">Meta's fast single-sequence structure prediction using language models.</div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -461,18 +582,18 @@
             <h3 class="stack-category-title">Molecular Docking</h3>
           </div>
           <div class="stack-tools">
-            <div class="stack-tool">
+            <a href="https://vina.scripps.edu/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">AutoDock Vina</div>
               <div class="stack-tool-desc">Open-source molecular docking program for drug discovery.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://pymol.org/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">PyMOL</div>
               <div class="stack-tool-desc">Molecular visualization system for rendering and analyzing 3D structures.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://www.cgl.ucsf.edu/chimerax/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">ChimeraX</div>
               <div class="stack-tool-desc">Next-generation molecular visualization from UCSF.</div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -483,18 +604,18 @@
             <h3 class="stack-category-title">Genomics & Variant Analysis</h3>
           </div>
           <div class="stack-tools">
-            <div class="stack-tool">
+            <a href="https://www.cog-genomics.org/plink/2.0/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">PLINK</div>
               <div class="stack-tool-desc">Whole-genome association analysis toolset for large datasets.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://gatk.broadinstitute.org/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">GATK</div>
               <div class="stack-tool-desc">Genome Analysis Toolkit for variant discovery and genotyping.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://samtools.github.io/bcftools/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">bcftools</div>
               <div class="stack-tool-desc">Utilities for variant calling and manipulating VCF/BCF files.</div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -505,18 +626,18 @@
             <h3 class="stack-category-title">AI Frameworks</h3>
           </div>
           <div class="stack-tools">
-            <div class="stack-tool">
+            <a href="https://pytorch.org/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">PyTorch</div>
               <div class="stack-tool-desc">Deep learning framework favored in research for flexibility.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://www.tensorflow.org/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">TensorFlow</div>
               <div class="stack-tool-desc">End-to-end ML platform for production-ready models.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://deepchem.io/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">DeepChem</div>
               <div class="stack-tool-desc">Democratizing deep learning for drug discovery and chemistry.</div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -527,14 +648,14 @@
             <h3 class="stack-category-title">Molecular Dynamics</h3>
           </div>
           <div class="stack-tools">
-            <div class="stack-tool">
+            <a href="https://www.gromacs.org/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">GROMACS</div>
               <div class="stack-tool-desc">High-performance molecular dynamics simulation package.</div>
-            </div>
-            <div class="stack-tool">
+            </a>
+            <a href="https://openmm.org/" target="_blank" rel="noopener" class="stack-tool">
               <div class="stack-tool-name">OpenMM</div>
               <div class="stack-tool-desc">GPU-accelerated molecular simulation toolkit with Python API.</div>
-            </div>
+            </a>
           </div>
         </div>
 

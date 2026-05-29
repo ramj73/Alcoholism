@@ -5,6 +5,7 @@
 import { NAV_ITEMS } from './data.js';
 import { initProteinViewer, loadProteinByGene } from './protein-viewer.js';
 import { initGwasLookup } from './gwas-lookup.js';
+import { initGenomicsStudio } from './genomics-studio.js';
 
 // ─── Initialization ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticleCanvas();
   initProteinViewer();
   initGwasLookup();
+  initGenomicsStudio();
   initGeneTagClicks();
 });
 

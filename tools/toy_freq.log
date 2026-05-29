@@ -1,0 +1,26 @@
+PLINK v1.9.0-b.7.11 64-bit (19 Aug 2025)
+Options in effect:
+  --file tools\toy
+  --freq
+  --out tools\toy_freq
+
+Hostname: RAM
+Working directory: D:\GitHub\Alcoholism
+Start time: Fri May 29 10:34:28 2026
+
+Random number seed: 1780031068
+32510 MB RAM detected; reserving 16255 MB for main workspace.
+Scanning .ped file... done.
+Performing single-pass .bed write (2 variants, 2 people).
+--file: tools\toy_freq-temporary.bed + tools\toy_freq-temporary.bim +
+tools\toy_freq-temporary.fam written.
+2 variants loaded from .bim file.
+2 people (2 males, 0 females) loaded from .fam.
+2 phenotype values loaded from .fam.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 2 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.75.
+--freq: Allele frequencies (founders only) written to tools\toy_freq.frq .
+
+End time: Fri May 29 10:34:28 2026

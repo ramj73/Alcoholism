@@ -1,0 +1,17 @@
+##fileformat=VCFv4.2
+##fileDate=20260529
+##source=GenomicsSimulatedDataGen
+##reference=GRCh38
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allele Depths">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE001	SAMPLE002	SAMPLE003
+4	46337851	rs279871	A	G	999	PASS	DP=60;AF=0.35	GT:AD:DP:GQ	0/1:18,12:30:99	0/0:30,0:30:99	1/1:0,28:28:99
+4	100224143	rs1229984	G	A	999	PASS	DP=58;AF=0.08	GT:AD:DP:GQ	0/0:25,0:25:99	0/1:16,11:27:99	0/0:32,0:32:99
+6	154038166	rs1799971	A	G	999	PASS	DP=45;AF=0.20	GT:AD:DP:GQ	0/1:15,8:23:99	0/0:22,0:22:99	0/1:14,8:22:99
+11	113409618	rs1800497	C	T	999	PASS	DP=50;AF=0.25	GT:AD:DP:GQ	0/0:24,0:24:99	0/1:16,10:26:99	0/1:15,11:26:99
+12	111803962	rs671	G	A	999	PASS	DP=65;AF=0.05	GT:AD:DP:GQ	0/0:31,0:31:99	0/0:29,0:29:99	0/1:20,15:35:99
+22	19932408	rs4680	A	G	999	PASS	DP=48;AF=0.60	GT:AD:DP:GQ	0/1:12,12:24:99	1/1:0,24:24:99	0/0:24,0:24:99

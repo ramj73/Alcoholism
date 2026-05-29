@@ -1,0 +1,63 @@
+
+### Part 1
+
+plink --file wgas1 --make-bed --out wgas2
+plink --bfile wgas2 --out validate
+
+plink --bfile wgas2 --freq --out freq1
+plink --bfile wgas2 --hardy --out hwe1
+
+plink --bfile wgas2 --maf 0.01 --geno 0.05 --mind 0.05 --hwe 1e-3 --make-bed --out wgas3
+
+plink --bfile wgas3 --assoc --adjust --out assoc1
+plink --bfile wgas3 --mh --within pop.cov --adjust --out cmh1
+
+
+### Part 2
+
+plink --bfile wgas3 --recode --snp rs11204005 --out tophit
+plink --file tophit --all --missing
+plink --file tophit --hardy
+
+plink --file tophit --mh --within pop.cov --bd
+plink --file tophit --homog --within pop.cov
+plink --file tophit --logistic --covar pop.cov
+plink --file tophit --logistic --covar pop.cov --interaction
+plink --file tophit --assoc --pheno pop.cov
+plink --file tophit --logistic --pheno pop.cov --covar tophit.ped --covar-number 4
+
+plink --file tophit --model --cell 1
+plink --file tophit --logistic --genotypic
+plink --file tophit --logistic --genotypic --hethom
+
+plink --file tophit --filter-males --logistic 
+plink --file tophit --filter-females --logistic
+plink --file tophit --logistic --sex --interaction
+
+plink --bfile wgas3 --indep-pairwise 50 10 0.2 --out prune1
+plink --bfile wgas3 --extract prune1.prune.in --genome --out ibs1
+plink --bfile wgas3 --read-genome ibs1.genome --cluster --ppc 1e-3 --cc --mds-plot 2 --out strat1 
+
+plink --file extra --mh --within pop.cov --out strat2
+
+plink --bfile wgas3 --snp rs11204005 --window 100 --merge extra.ped extra.map --make-bed --out followup
+plink --bfile followup --mh --within pop.cov --out followup-cmh
+
+plink --bfile followup --clump followup-cmh.cmh --clump-verbose --clump-r2 0.1 --clump-annotate OR,A1
+plink --bfile followup --recodeHV --out hv1
+plink --bfile followup --snps rs2460915,rs7835221,rs2460911,rs11204005,rs2460338 --make-bed --out followup2
+plink --bfile followup2 --r2
+
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --each-versus-others
+
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --independent-effect rs2460915	
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --independent-effect rs7835221
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --independent-effect rs2460911
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --independent-effect rs11204005
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --independent-effect rs2460338
+
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --control rs2460915
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --control rs7835221
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --control rs2460911
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --control rs11204005
+plink --bfile followup2 --chap --hap-snps rs2460915-rs2460338 --control rs2460338

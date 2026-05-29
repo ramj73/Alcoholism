@@ -246,6 +246,7 @@ export const NAV_ITEMS = [
   { id: 'protein-viewer', label: 'Proteins' },
   { id: 'workflow', label: 'Workflow' },
   { id: 'gwas', label: 'GWAS' },
+  { id: 'genomics-studio', label: 'Genomics Studio' },
   { id: 'stack', label: 'Stack' },
   { id: 'therapy', label: 'Therapy' },
   { id: 'datasets', label: 'Datasets' },
